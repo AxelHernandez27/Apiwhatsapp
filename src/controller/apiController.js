@@ -1,3 +1,5 @@
+const enviarmensaje = require("../service/apiService")
+
 const verificar = (req, res) => {
 
     try {
@@ -9,13 +11,6 @@ const verificar = (req, res) => {
             res.send(challenge);
         }else{
             res.status(400).send();
-            console.log("este error es el 404 del if");
-            console.log(tokencode);
-            console.log(token);
-            console.log(challenge);
-
-
-
         }
 
         console.log(req);
@@ -26,8 +21,29 @@ const verificar = (req, res) => {
 }
 
 const recibir = (req,res) => {
-    res.send("recibido");
-    console.log("Recibido consola"); 
+    try{
+        var entry = (req.body["entry"])[0];
+        var changes = (entry["changes"])[0];
+        var value = changes["value"];
+        var ObjetoMensaje = value["messages"];
+        
+        if(typeof ObjetoMensaje != "undefined"){
+            var messages = ObjetoMensaje[0];
+        
+            var text = messages ["text"]["body"];
+            var number = messages["from"];
+    
+            enviarmensaje.EnviarMensajeWhatssApp(text, number);
+        }
+       
+        res.send("EVENT_RECEIVED");
+    }catch(e){
+        console.log(e);
+        res.send("EVENT_RECEIVED");
+    }
+    console.log(req);
+   
+     
 }
 
 module.exports ={
