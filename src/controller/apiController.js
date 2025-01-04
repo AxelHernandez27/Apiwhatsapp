@@ -17,7 +17,6 @@ const verificar = (req, res) => {
     } catch (e) {
         res.status(400).send();
     }
-  
 }
 
 const recibir = (req,res) => {
@@ -42,8 +41,6 @@ const recibir = (req,res) => {
         res.send("EVENT_RECEIVED");
     }
     console.log(req);
-   
-     
 }
 
 module.exports ={
