@@ -2,13 +2,6 @@ const https = require("https");
 
 function EnviarMensajeWhatssApp(text, number){
 
-    if (!/^\d+$/.test(number)) {
-        console.error("Número inválido:", number);
-        return;
-    } else {
-        console.error("Número válido:", number);
-    }
-
     text = text.toLowerCase();
     
     if(text.includes("hola")){
@@ -46,7 +39,10 @@ function EnviarMensajeWhatssApp(text, number){
             "text" : {
                 "preview_url" : false,
                 "body": "Nuestros días de atención son de lunes a domingo en el horario que más se acomode a tu evento (a disponibilidad). 😊"
+
+
             }
+    
         });
     }else if (text == "3"){
         var data = JSON.stringify({

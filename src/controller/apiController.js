@@ -21,7 +21,6 @@ const verificar = (req, res) => {
 
 const recibir = (req,res) => {
     try{
-        console.log("JSON recibido: ", JSON.stringify(req.body, null, 2));
         var entry = (req.body["entry"])[0];
         var changes = (entry["changes"])[0];
         var value = changes["value"];
@@ -32,7 +31,6 @@ const recibir = (req,res) => {
         
             var text = messages ["text"]["body"];
             var number = messages["from"];
-            console.log("Número recibido: ", number);
     
             enviarmensaje.EnviarMensajeWhatssApp(text, number);
         }
