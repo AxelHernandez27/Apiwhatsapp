@@ -12,7 +12,7 @@ function EnviarMensajeWhatssApp(text, number){
             "type": "text",
             "text" : {
                 "preview_url" : false,
-                "body": "Hola, bienvenida a Edith Manrique MakeUp Artist.😊"
+                "body": "Hola, bienvenida a Edith Manrique MakeUp Artist😊 \n Si quieres que te mostremos más información, escribe más información y te aparecerá el menú con opciones."
             }
     
         });
