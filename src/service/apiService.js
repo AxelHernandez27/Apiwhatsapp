@@ -82,9 +82,11 @@ function EnviarMensajeWhatssApp(text, number){
         });
     }else if (text =="5"){
         // Historial del chat
+        var asesoraNo = "4778501589";
         const chatH = chatHistorial[number]
             .map(entry => `${entry.type === "received" ? "Cliente" : "Bot"}: ${entry.text}`)
             .join("\n");
+
         data = JSON.stringify({
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
@@ -94,7 +96,17 @@ function EnviarMensajeWhatssApp(text, number){
                 "preview_url" : false,
                 "body": "🙏 Gracias por contactarnos, en un momento uno de nuestra asesora te contestará.💬\n\n¡Gracias por tu paciencia! 😊"
             }
-    
+        });
+
+        data = JSON.stringify({
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to" : asesoraNo,
+            "type": "text",
+            "text" : {
+                "preview_url" : false,
+                "body": `Historial del chat con el cliente:\n\nNúmero de teléfono: ${number}\n\n${chatH}`
+            }
         });
     }else if (text == "0"){
         data = JSON.stringify({
