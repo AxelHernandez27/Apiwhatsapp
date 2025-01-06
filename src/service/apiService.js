@@ -14,7 +14,7 @@ function EnviarMensajeWhatssApp(text, number){
     // Guarda el mensaje recibido en el historial
     chatHistorial[number].push({type: "received", text});
 
-    let data, data1;
+    let data;
     
     if(text.includes("hola")){
         data = JSON.stringify({
@@ -81,7 +81,7 @@ function EnviarMensajeWhatssApp(text, number){
         });
     }else if (text =="5"){
         // Historial del chat
-        var asesoraNo = "+524778501589";
+        var asesoraNo = "524778501589";
         const chatH = chatHistorial[number]
             .map(entry => `${entry.type === "received" ? "**Cliente**" : "Bot"}: ${entry.text}`)
             .join("\n");
@@ -97,9 +97,7 @@ function EnviarMensajeWhatssApp(text, number){
             }
          });
 
-        
-
-        data1 = JSON.stringify({
+        data = JSON.stringify({
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
             "to" : asesoraNo,
