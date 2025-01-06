@@ -24,7 +24,7 @@ function EnviarMensajeWhatssApp(text, number){
             "type": "text",
             "text" : {
                 "preview_url" : false,
-                "body": "Hola, bienvenida a Edith Manrique MakeUp Artist😊 \n Si quieres que te mostremos más información, escribe más información y te aparecerá el menú con opciones."
+                "body": "Hola🌟\n\n¿Ya tuviste oportunidad de visitar nuestra página web? 👉 edithmanriquemakeupartist.netlify.app/inicio\nEn ella encontrarás información sobre nuestros servicios de peinados y maquillaje.\n\n📋 Selecciona una opción para continuar:\n1️⃣ Información sobre servicios de maquillaje y peinados.\n2️⃣ Conocer nuestros horarios de atención.\n3️⃣ Reservar una cita.\n4️⃣ Ver nuestros trabajos recientes.\n5️⃣ Hablar con un asesor.\n0️⃣ Regresar al menú\n\nEscribe el número de la opción que deseas y con gusto te ayudaré. 😊"
             }
     
         });
