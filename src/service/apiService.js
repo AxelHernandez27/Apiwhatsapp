@@ -1,11 +1,23 @@
 const https = require("https");
 
+const chatHistorial = {};
+
 function EnviarMensajeWhatssApp(text, number){
 
     text = text.toLowerCase();
+
+    // Inicializa el historial si no existe
+    if (!chatHistorial[number]) {
+        chatHistorial[number] = [];
+    }
+
+    // Guarda el mensaje recibido en el historial
+    chatHistorial[number].push({type: "received", text});
+
+    let data;
     
     if(text.includes("hola")){
-        var data = JSON.stringify({
+        data = JSON.stringify({
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
             "to" : number,
@@ -17,7 +29,7 @@ function EnviarMensajeWhatssApp(text, number){
     
         });
     }else if(text =="1"){
-        var data = JSON.stringify({
+        data = JSON.stringify({
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
             "to" : number,
@@ -31,7 +43,7 @@ function EnviarMensajeWhatssApp(text, number){
         });
     
     }else if (text =="2"){
-        var data = JSON.stringify({
+        data = JSON.stringify({
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
             "to" : number,
@@ -45,22 +57,19 @@ function EnviarMensajeWhatssApp(text, number){
     
         });
     }else if (text == "3"){
-        var data = JSON.stringify({
+        data = JSON.stringify({
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
             "to" : number,
             "type": "text",
             "text" : {
                 "preview_url" : false,
-                "body": "🌟 Para agendar tu cita, proporciona los siguientes datos para revisar nuestra disponibilidad:\n\n📝 **Datos necesarios**:\n- Nombre:\n- Día de cita:\n- Hora de cita:\n- Dirección del servicio:\n\n⏳ *Se te notificará cuando tu cita esté agendada.*\n📅 En caso de no tener disponibilidad, te ofreceremos horarios alternativos para que elijas el que mejor se adapte a tus tiempos. 😊"
-
-
-
+                "body": "🌟 Para agendar tu cita, proporciona los siguientes datos para revisar nuestra disponibilidad:\n\n📝 **Datos necesarios**:\n- Nombre:\n- Día de cita:\n- Hora de cita:\n- Dirección del servicio:\n\n⏳ *Se te notificará cuando tu cita esté agendada.*\n📅 En caso de no tener disponibilidad, te ofreceremos horarios alternativos para que elijas el que mejor se adapte a tus tiempos. 😊\n\n⚠️ *Por favor, guarda este formato y envíalo para que una de nuestras asesoras pueda gestionar tu solicitud.*"
             }
     
         });
     }else if (text =="4"){
-        var data = JSON.stringify({
+        data = JSON.stringify({
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
             "to" : number,
@@ -68,15 +77,15 @@ function EnviarMensajeWhatssApp(text, number){
             "text" : {
                 "preview_url" : false,
                 "body": "✨ Para conocer más sobre nuestro trabajo, visita nuestra página:\n🌐 [Portafolio](https://edithmanriquemakeupartist.netlify.app/portafolio)\n\n📲 **Síguenos en nuestras redes sociales para más contenido reciente:**\n- Instagram: [edithmanriquemakeup](https://www.instagram.com/edithmanriquemakeup?igsh=bzg1eTFyN2w5ZDNk)\n- Facebook: [Edith Manrique Makeup Artist](https://www.facebook.com/profile.php?id=61568716406850&mibextid=ZbWKwL)\n\n💖 ¡Gracias por tu apoyo! #MakeupLover"
-
-
-
-
             }
     
         });
     }else if (text =="5"){
-        var data = JSON.stringify({
+        // Historial del chat
+        const chatH = chatHistorial[number]
+            .map(entry => `${entry.type === "received" ? "Cliente" : "Bot"}: ${entry.text}`)
+            .join("\n");
+        data = JSON.stringify({
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
             "to" : number,
@@ -88,7 +97,7 @@ function EnviarMensajeWhatssApp(text, number){
     
         });
     }else if (text == "0"){
-        var data = JSON.stringify({
+        data = JSON.stringify({
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
             "to" : number,
@@ -101,7 +110,7 @@ function EnviarMensajeWhatssApp(text, number){
     
         });
     }else{
-        var data = JSON.stringify({
+        data = JSON.stringify({
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
             "to" : number,
@@ -114,6 +123,9 @@ function EnviarMensajeWhatssApp(text, number){
     
         });
     }
+
+    // Guarda la respuesta del bot en el historial
+    chatHistorial[number].push({ type: "sent", text: JSON.parse(data).text.body});
   
 
     const options ={

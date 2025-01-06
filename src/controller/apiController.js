@@ -19,6 +19,8 @@ const verificar = (req, res) => {
     }
 }
 
+const chatHistorial = {};
+
 const recibir = (req,res) => {
     try{
         console.log("JSON recibido:", JSON.stringify(req.body, null, 2));
@@ -33,6 +35,17 @@ const recibir = (req,res) => {
             var text = messages ["text"]["body"];
             var number = messages["from"];
             console.log("Numero enviado: "+ number + "texto recibido: " + text )
+
+            // Guardar mensaje en el historial
+            if (!chatHistorial[number]) {
+                chatHistorial[number] = [];
+            }
+            chatHistorial[number].push({
+                sender: "user",
+                messages: text,
+                timestamp: new Date()
+            });
+            
             enviarmensaje.EnviarMensajeWhatssApp(text, number);
         }
        
