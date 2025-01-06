@@ -105,7 +105,7 @@ function EnviarMensajeWhatssApp(text, number){
             "type": "text",
             "text" : {
                 "preview_url" : false,
-                "body": `Historial del chat con el cliente:\n\nNúmero de teléfono: ${number}\n\n${chatH}`
+                "body": `Hola Edith! 🤗\n\nUn cliente está solicitando asesoramiento de tu parte, te comparto el historial del chat 🙌\n\nNúmero del cliente: ${number}\n\n${chatH}`
             }
         });
     }else if (text == "0"){
