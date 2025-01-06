@@ -2,6 +2,41 @@ const https = require("https");
 
 const chatHistorial = {};
 
+function enviarMensajeAsesora(number, chatH) {
+    const asesoraNo = "524778501589"; // Número de la asesora
+
+    const mensajeAsesora = JSON.stringify({
+        "messaging_product": "whatsapp",
+        "recipient_type": "individual",
+        "to": asesoraNo,
+        "type": "text",
+        "text": {
+            "preview_url": false,
+            "body": `Hola Edith! 🤗\n\nUna persona está solicitando asesoramiento de tu parte, te comparto el historial del chat 🙌\n\nNúmero del cliente: ${number}\n\n${chatH}`
+        }
+    });
+
+    const options ={
+        host: "graph.facebook.com",
+        path: "/v21.0/503111629557940/messages",
+        method: "POST",
+        body: data,
+        headers : {
+            "Content-Type" : "application/json",
+            Authorization : "Bearer EAAPkn3wIwJ8BO6PZCm09apLLwayBzUU26YcGi54S4xp02dNeFvBGRZCR0qylfKK9tC2lW5jdq77XPN0ri8wqf0gnklfHYNVvjjEAemmv6NmRMtODgv7OTPZAj8mzHpSZA3e80F7pPlJGjilfCTha8VZCHqgZCJIr2aTXbi994mP7Ea3yzo0vhYUOuVv7UkDJOz"
+        }
+    };
+
+    const req = https.request(options, res => {
+        res.on("data", d => {
+            process.stdout.write(d);
+        });
+    });
+
+    req.write(mensajeAsesora);
+    req.end();
+}
+
 function EnviarMensajeWhatssApp(text, number){
 
     text = text.toLowerCase();
@@ -88,22 +123,10 @@ function EnviarMensajeWhatssApp(text, number){
                 "preview_url" : false,
                 "body": "🙏 Gracias por contactarnos, en un momento nuestra asesora te contestará.💬\n\n¡Gracias por tu paciencia! 😊"
             }
-         });
-
-        data1 = JSON.stringify({
-            "messaging_product": "whatsapp",
-            "recipient_type": "individual",
-            "to" : asesoraNo,
-            "type": "text",
-            "text" : {
-                "preview_url" : false,
-                "body": `Hola Edith! 🤗\n\nUna persona está solicitando asesoramiento de tu parte, te comparto el historial del chat 🙌\n\nNúmero del cliente: ${number}\n\n${chatH}`
-            }
         });
 
-        if(data) {
-            EnviarMensajeWhatssApp(data1, asesoraNo)
-        }
+        enviarMensajeAsesora(number, chatH);
+
     }else if (text == "0"){
         data = JSON.stringify({
             "messaging_product": "whatsapp",
