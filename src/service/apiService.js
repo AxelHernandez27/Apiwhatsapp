@@ -15,6 +15,7 @@ function EnviarMensajeWhatssApp(text, number){
     chatHistorial[number].push({type: "received", text});
 
     let data;
+    let data1;
     
     if(text.includes("hola")){
         data = JSON.stringify({
@@ -98,7 +99,7 @@ function EnviarMensajeWhatssApp(text, number){
             }
          });
 
-        data = JSON.stringify({
+        data1 = JSON.stringify({
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
             "to" : asesoraNo,
