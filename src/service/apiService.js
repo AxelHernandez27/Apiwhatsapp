@@ -14,7 +14,7 @@ function EnviarMensajeWhatssApp(text, number){
     // Guarda el mensaje recibido en el historial
     chatHistorial[number].push({type: "received", text});
 
-    let data;
+    let data, data1;
     
     if(text.includes("hola")){
         data = JSON.stringify({
@@ -78,7 +78,6 @@ function EnviarMensajeWhatssApp(text, number){
                 "preview_url" : false,
                 "body": "✨ Para conocer más sobre nuestro trabajo, visita nuestra página:\n🌐 [Portafolio](https://edithmanriquemakeupartist.netlify.app/portafolio)\n\n📲 **Síguenos en nuestras redes sociales para más contenido reciente:**\n- Instagram: [edithmanriquemakeup](https://www.instagram.com/edithmanriquemakeup?igsh=bzg1eTFyN2w5ZDNk)\n- Facebook: [Edith Manrique Makeup Artist](https://www.facebook.com/profile.php?id=61568716406850&mibextid=ZbWKwL)\n\n💖 ¡Gracias por tu apoyo! #MakeupLover"
             }
-    
         });
     }else if (text =="5"){
         // Historial del chat
@@ -94,20 +93,28 @@ function EnviarMensajeWhatssApp(text, number){
             "type": "text",
             "text" : {
                 "preview_url" : false,
-                "body": "🙏 Gracias por contactarnos, en un momento uno de nuestra asesora te contestará.💬\n\n¡Gracias por tu paciencia! 😊"
+                "body": "🙏 Gracias por contactarnos, en un momento nuestra asesora te contestará.💬\n\n¡Gracias por tu paciencia! 😊"
             }
          });
 
-        data = JSON.stringify({
+        
+
+        data1 = JSON.stringify({
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
             "to" : asesoraNo,
             "type": "text",
             "text" : {
                 "preview_url" : false,
-                "body": `Hola Edith! 🤗\n\nUn cliente está solicitando asesoramiento de tu parte, te comparto el historial del chat 🙌\n\nNúmero del cliente: ${number}\n\n${chatH}`
+                "body": `Hola Edith! 🤗\n\nUna persona está solicitando asesoramiento de tu parte, te comparto el historial del chat 🙌\n\nNúmero del cliente: ${number}\n\n${chatH}`
             }
         });
+
+
+        if(data) {
+            EnviarMensajeWhatssApp(data1, asesoraNo)
+        }
+        
     }else if (text == "0"){
         data = JSON.stringify({
             "messaging_product": "whatsapp",
@@ -139,7 +146,6 @@ function EnviarMensajeWhatssApp(text, number){
     // Guarda la respuesta del bot en el historial
     chatHistorial[number].push({ type: "sent", text: JSON.parse(data).text.body});
   
-
     const options ={
         host: "graph.facebook.com",
         path: "/v21.0/503111629557940/messages",
