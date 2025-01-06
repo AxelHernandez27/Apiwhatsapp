@@ -20,20 +20,20 @@ function enviarMensajeAsesora(number, chatH) {
         host: "graph.facebook.com",
         path: "/v21.0/503111629557940/messages",
         method: "POST",
-        body: data,
         headers : {
             "Content-Type" : "application/json",
             Authorization : "Bearer EAAPkn3wIwJ8BO6PZCm09apLLwayBzUU26YcGi54S4xp02dNeFvBGRZCR0qylfKK9tC2lW5jdq77XPN0ri8wqf0gnklfHYNVvjjEAemmv6NmRMtODgv7OTPZAj8mzHpSZA3e80F7pPlJGjilfCTha8VZCHqgZCJIr2aTXbi994mP7Ea3yzo0vhYUOuVv7UkDJOz"
         }
     };
 
+    // Enviar el mensaje
     const req = https.request(options, res => {
         res.on("data", d => {
             process.stdout.write(d);
         });
     });
 
-    req.write(mensajeAsesora);
+    req.write(mensajeAsesora);  // Asegúrate de que este sea el cuerpo correcto
     req.end();
 }
 
@@ -124,7 +124,10 @@ function EnviarMensajeWhatssApp(text, number){
             }
         });
 
-        
+         // Guarda la respuesta del bot en el historial
+        chatHistorial[number].push({ type: "sent", text: JSON.parse(data).text.body});
+
+        enviarMensajeAsesora(number, chatH);
 
     }else if (text == "0"){
         data = JSON.stringify({
@@ -153,8 +156,6 @@ function EnviarMensajeWhatssApp(text, number){
     // Guarda la respuesta del bot en el historial
     chatHistorial[number].push({ type: "sent", text: JSON.parse(data).text.body});
   
-    enviarMensajeAsesora(number, chatH);
-    
     const options ={
         host: "graph.facebook.com",
         path: "/v21.0/503111629557940/messages",
