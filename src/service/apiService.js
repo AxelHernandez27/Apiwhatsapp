@@ -3,7 +3,7 @@ const https = require("https");
 const chatHistorial = {};
 
 function enviarMensajeAsesora(number, chatH) {
-    const asesoraNo = "524778501589"; // Número de la asesora
+    const asesoraNo = "524777465581"; // Número de la asesora
 
     const mensajeAsesora = JSON.stringify({
         "messaging_product": "whatsapp",
