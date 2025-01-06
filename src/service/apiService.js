@@ -83,7 +83,7 @@ function EnviarMensajeWhatssApp(text, number){
         });
     }else if (text =="5"){
         // Historial del chat
-        var asesoraNo = "+524778501589";
+        var asesoraNo = "524778501589";
         const chatH = chatHistorial[number]
             .map(entry => `${entry.type === "received" ? "**Cliente**" : "Bot"}: ${entry.text}`)
             .join("\n");
