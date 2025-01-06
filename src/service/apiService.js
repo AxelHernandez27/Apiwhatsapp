@@ -87,16 +87,16 @@ function EnviarMensajeWhatssApp(text, number){
             .map(entry => `${entry.type === "received" ? "Cliente" : "Bot"}: ${entry.text}`)
             .join("\n");
 
-        data = JSON.stringify({
-            "messaging_product": "whatsapp",
-            "recipient_type": "individual",
-            "to" : number,
-            "type": "text",
-            "text" : {
-                "preview_url" : false,
-                "body": "🙏 Gracias por contactarnos, en un momento uno de nuestra asesora te contestará.💬\n\n¡Gracias por tu paciencia! 😊"
-            }
-        });
+        // data = JSON.stringify({
+        //     "messaging_product": "whatsapp",
+        //     "recipient_type": "individual",
+        //     "to" : number,
+        //     "type": "text",
+        //     "text" : {
+        //         "preview_url" : false,
+        //         "body": "🙏 Gracias por contactarnos, en un momento uno de nuestra asesora te contestará.💬\n\n¡Gracias por tu paciencia! 😊"
+        //     }
+        // });
 
         data = JSON.stringify({
             "messaging_product": "whatsapp",
