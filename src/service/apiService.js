@@ -71,11 +71,12 @@ function createButtonResponse(number, messageText, buttons) {
     } else {
         switch (text) {
             case "1":
-                data = createResponse(number, "¡Aquí tienes nuestra lista de servicios! 😊\n\n📋 **Maquillaje**:\n- Maquillaje nupcial\n- Maquillaje XV años\n- Maquillaje piel madura\n- Maquillaje editorial\n- Maquillaje full color\n- Maquillaje con delineados gráficos.\n\n📋 **Peinados**:\n- Peinado con Ondas de agua y Hollywood\n- Peinado alaciado\n- Peinados sueltos\n- Peinados semirecogidos\n\n");
-                sendWhatsAppMessage(data);
+                const mensaje = createResponse(number, "¡Aquí tienes nuestra lista de servicios! 😊\n\n📋 **Maquillaje**:\n- Maquillaje nupcial\n- Maquillaje XV años\n- Maquillaje piel madura\n- Maquillaje editorial\n- Maquillaje full color\n- Maquillaje con delineados gráficos.\n\n📋 **Peinados**:\n- Peinado con Ondas de agua y Hollywood\n- Peinado alaciado\n- Peinados sueltos\n- Peinados semirecogidos\n\n");
+                sendWhatsAppMessage(mensaje);
+
                 const buttonsAgendar = [
-                    { type: "reply", reply: { id: "si", title: "Sí "} },
-                    { type: "reply", reply: { id: "no", title: "No "} }
+                    { type: "reply", reply: { id: "si", title: "Sí" } },
+                    { type: "reply", reply: { id: "no", title: "No" } }
                 ];
 
                 data = createButtonResponse(number, "¿Te gustaría agendar una cita? 😊", buttonsAgendar);
