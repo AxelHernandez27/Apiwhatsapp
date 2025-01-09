@@ -4,7 +4,7 @@ const { title } = require("process");
 const chatHistorial = {};
 
 function enviarMensajeAsesora(number, chatH) {
-    const asesoraNo = "524778501589"; // Número de la asesora
+    const asesoraNo = "524777465581"; // Número de la asesora
 
     const mensajeAsesora = JSON.stringify({
         "messaging_product": "whatsapp",
@@ -76,6 +76,8 @@ function EnviarMensajeWhatssApp(text, number) {
                 break;
             case "4":
                 data = createResponse(number, "🙏 Gracias por contactarnos, en un momento nuestra asesora te contestará.💬\n\n¡Gracias por tu paciencia! 😊");
+                const datosCliente = text;
+                enviarMensajeAsesora(number, datosCliente);
                 break;
             case "0":
                 data = createResponse(number, "Hola🌟\n\n¿Ya tuviste oportunidad de visitar nuestra página web? 👉 edithmanriquemakeupartist.netlify.app/inicio\nEn ella encontrarás información sobre nuestros servicios de peinados y maquillaje.\n\n📋 Selecciona una opción para continuar:\n1️⃣ Información sobre servicios de maquillaje, peinados y cotizaciones/reservas.\n2️⃣ Conocer nuestros horarios de atención.\n3️⃣ Ver nuestros trabajos recientes.\n4️⃣ Hablar con un asesor.\n0️⃣ Regresar al menú\n\nEscribe el número de la opción que deseas y con gusto te ayudaré.😊");
