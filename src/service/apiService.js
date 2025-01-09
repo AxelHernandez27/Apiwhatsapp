@@ -89,33 +89,15 @@ function createButtonResponse(number) {
         switch (text.toLowerCase()) {
             case "1":
                 data = createResponse(number, "¡Aquí tienes nuestra lista de servicios! 😊\n\n📋 **Maquillaje**:\n- Maquillaje nupcial\n- Maquillaje XV años\n- Maquillaje piel madura\n- Maquillaje editorial\n- Maquillaje full color\n- Maquillaje con delineados gráficos.\n\n📋 **Peinados**:\n- Peinado con Ondas de agua y Hollywood\n- Peinado alaciado\n- Peinados sueltos\n- Peinados semirecogidos\n\n¿Te gustaría agendar una cita? 😊\n\nEscribe Escribe \"Sí\" o \"No\"");
-                chatHistorial[number].push({type: "sent", text: JSON.parse(data).text.body});
-                sendWhatsAppMessage(data);
                 break;
             case "si":
                 data = createResponse(number, "¡Perfecto! Por favor, proporcióname los siguientes datos para agendar tu cita:\n\n📌 **Nombre y Apellido**\n📅 **Fecha (DD/MM/AAAA)**\n⏰ **Hora (HH:MM)**\n🏠 **Domicilio**\n🛠️ **Servicio** (e.g., Maquillaje nupcial, Peinado con ondas de agua, etc.)");
-
-                // Enviar a la asesora el historial del chat
-                const chatH = chatHistorial[number] || "No hay historial disponible.";
-                enviarMensajeAsesora(number, chatH);
-
-                chatHistorial[number].push({ type: "sent", text: JSON.parse(data).text.body });
-                sendWhatsAppMessage(data);
                 break;
             case "sí":
                     data = createResponse(number, "¡Perfecto! Por favor, proporcióname los siguientes datos para agendar tu cita:\n\n📌 **Nombre y Apellido**\n📅 **Fecha (DD/MM/AAAA)**\n⏰ **Hora (HH:MM)**\n🏠 **Domicilio**\n🛠️ **Servicio** (e.g., Maquillaje nupcial, Peinado con ondas de agua, etc.)");
-    
-                    // Enviar a la asesora el historial del chat
-                    const chatHi = chatHistorial[number] || "No hay historial disponible.";
-                    enviarMensajeAsesora(number, chatHi);
-    
-                    chatHistorial[number].push({ type: "sent", text: JSON.parse(data).text.body });
-                    sendWhatsAppMessage(data);
                     break;
             case "no":
                 data = createResponse(number, "¡Entendido! Si necesitas ayuda más adelante, no dudes en escribirme. 😊");
-                chatHistorial[number].push({ type: "sent", text: JSON.parse(data).text.body });
-                sendWhatsAppMessage(data);
                 break;
             case "2":
                 data = createResponse(number, "Nuestros días de atención son de lunes a domingo en el horario que más se acomode a tu evento (a disponibilidad). 😊");
