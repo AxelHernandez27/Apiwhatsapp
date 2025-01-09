@@ -48,41 +48,6 @@ function EnviarMensajeWhatssApp(text, number) {
 
     let data;
 
-// Función para crear botones interactivos
-function createButtonResponse(number) {
-    return JSON.stringify({
-        "messaging_product": "whatsapp",
-        "to": number,
-        "type": "interactive",
-        "interactive": {
-            "type": "button",
-            "body": {
-                "text": "deseas agendar una cita?"
-            },
-            "footer": {
-                "text": "Elige una opción:"
-            },
-            "action": {
-                "buttons": [{
-                    "type" : "reply",
-                    "reply" :{
-                        "id" : "btnsi",
-                        "title" : "Si"
-                    },
-                },
-                {
-                    "type" : "reply",
-                    "reply" :{
-                        "id" : "btnno",
-                        "title" : "No"
-                    },
-                }
-            ]
-            }
-        }
-    });
-}
-
     if (text.includes("hola")) {
         data = createResponse(number, "Hola🌟\n\n¿Ya tuviste oportunidad de visitar nuestra página web? 👉 edithmanriquemakeupartist.netlify.app/inicio\nEn ella encontrarás información sobre nuestros servicios de peinados y maquillaje.\n\n📋 Selecciona una opción para continuar:\n1️⃣ Información sobre servicios de maquillaje, peinados y cotizaciones/reservas.\n2️⃣ Conocer nuestros horarios de atención.\n3️⃣ Ver nuestros trabajos recientes.\n4️⃣ Hablar con un asesor.\n0️⃣ Regresar al menú\n\nEscribe el número de la opción que deseas y con gusto te ayudaré. 😊");
     } else if (text.includes(":")) {
@@ -95,10 +60,10 @@ function createButtonResponse(number) {
                 data = createResponse(number, "¡Aquí tienes nuestra lista de servicios! 😊\n\n📋 **Maquillaje**:\n- Maquillaje nupcial\n- Maquillaje XV años\n- Maquillaje piel madura\n- Maquillaje editorial\n- Maquillaje full color\n- Maquillaje con delineados gráficos.\n\n📋 **Peinados**:\n- Peinado con Ondas de agua y Hollywood\n- Peinado alaciado\n- Peinados sueltos\n- Peinados semirecogidos\n\n¿Te gustaría agendar una cita? 😊\n\nEscribe \"Sí\" o \"No\"");
                 break;
             case "si":
-                data = createResponse(number, "¡Perfecto! Por favor, proporcióname los siguientes datos para agendar tu cita:\n\n📌 *Nombre y Apellido*\n📅 *Fecha (DD/MM/AAAA)*\n⏰ *Hora (HH:MM)*\n🏠 *Domicilio*\n🛠️ *Servicio* (e.g., Maquillaje nupcial, Peinado con ondas de agua, etc.)");
+                data = createResponse(number, "¡Perfecto! Por favor, proporcióname los siguientes datos en un solo mensaje para agendar tu cita:\n\n📌 *Nombre y Apellido*\n📅 *Fecha (DD/MM/AAAA)*\n⏰ *Hora (HH:MM)*\n🏠 *Domicilio*\n🛠️ *Servicio* (e.g., Maquillaje nupcial, Peinado con ondas de agua, etc.)");
                 break;
             case "sí":
-                    data = createResponse(number, "¡Perfecto! Por favor, proporcióname los siguientes datos para agendar tu cita:\n\n📌 *Nombre y Apellido*\n📅 *Fecha (DD/MM/AAAA)*\n⏰ *Hora (HH:MM)*\n🏠 *Domicilio*\n🛠️ *Servicio* (e.g., Maquillaje nupcial, Peinado con ondas de agua, etc.)");
+                    data = createResponse(number, "¡Perfecto! Por favor, proporcióname los siguientes datos en un solo mensaje para agendar tu cita:\n\n📌 *Nombre y Apellido*\n📅 *Fecha (DD/MM/AAAA)*\n⏰ *Hora (HH:MM)*\n🏠 *Domicilio*\n🛠️ *Servicio* (e.g., Maquillaje nupcial, Peinado con ondas de agua, etc.)");
                     break;
             case "no":
                 data = createResponse(number, "¡Entendido! Si necesitas ayuda más adelante, no dudes en escribirme. 😊");
