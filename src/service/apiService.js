@@ -1,4 +1,5 @@
 const https = require("https");
+const { title } = require("process");
 
 const chatHistorial = {};
 
@@ -55,18 +56,28 @@ function createButtonResponse(number, messageText, buttons) {
         "type": "interactive",
         "interactive": {
             "type": "button",
-            "header": {
-                "type": "text",
-                "text": "¡Hola!"
-            },
             "body": {
-                "text": messageText
+                "text": "deseas agendar una cita?"
             },
             "footer": {
                 "text": "Elige una opción:"
             },
             "action": {
-                "buttons": buttons
+                "buttons": [{
+                    "type" : "reply",
+                    "reply" :{
+                        "id" : "btnsi",
+                        "title" : "Si"
+                    },
+                },
+                {
+                    "type" : "reply",
+                    "reply" :{
+                        "id" : "btnno",
+                        "title" : "No"
+                    },
+                }
+            ]
             }
         }
     });
