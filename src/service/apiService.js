@@ -60,10 +60,10 @@ function EnviarMensajeWhatssApp(text, number) {
                 data = createResponse(number, "¡Aquí tienes nuestra lista de servicios! 😊\n\n📋 **Maquillaje**:\n- Maquillaje nupcial\n- Maquillaje XV años\n- Maquillaje piel madura\n- Maquillaje editorial\n- Maquillaje full color\n- Maquillaje con delineados gráficos.\n\n📋 **Peinados**:\n- Peinado con Ondas de agua y Hollywood\n- Peinado alaciado\n- Peinados sueltos\n- Peinados semirecogidos\n\n¿Te gustaría agendar una cita? 😊\n\nEscribe \"Sí\" o \"No\"");
                 break;
             case "si":
-                data = createResponse(number, "¡Perfecto! Por favor, proporcióname los siguientes datos en un solo mensaje para agendar tu cita:\n\n📌 *Nombre y Apellido*\n📅 *Fecha (DD/MM/AAAA)*\n⏰ *Hora (HH:MM)*\n🏠 *Domicilio*\n🛠️ *Servicio* (e.g., Maquillaje nupcial, Peinado con ondas de agua, etc.)");
+                data = createResponse(number, "¡Perfecto! Por favor, proporcióname los siguientes datos en un solo mensaje para agendar tu cita:\n\n📌 *Nombre y Apellido*\n📅 *Fecha (DD/MM/AAAA)*\n⏰ *Hora (HH:MM)*\n🏠 *Domicilio*\n💄*Servicio* (e.g., Maquillaje nupcial, Peinado con ondas de agua, etc.)");
                 break;
             case "sí":
-                    data = createResponse(number, "¡Perfecto! Por favor, proporcióname los siguientes datos en un solo mensaje para agendar tu cita:\n\n📌 *Nombre y Apellido*\n📅 *Fecha (DD/MM/AAAA)*\n⏰ *Hora (HH:MM)*\n🏠 *Domicilio*\n🛠️ *Servicio* (e.g., Maquillaje nupcial, Peinado con ondas de agua, etc.)");
+                    data = createResponse(number, "¡Perfecto! Por favor, proporcióname los siguientes datos en un solo mensaje para agendar tu cita:\n\n📌 *Nombre y Apellido*\n📅 *Fecha (DD/MM/AAAA)*\n⏰ *Hora (HH:MM)*\n🏠 *Domicilio*\n💄*Servicio* (e.g., Maquillaje nupcial, Peinado con ondas de agua, etc.)");
                     break;
             case "no":
                 data = createResponse(number, "¡Entendido! Si necesitas ayuda más adelante, no dudes en escribirme. 😊");
