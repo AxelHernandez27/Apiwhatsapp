@@ -71,13 +71,20 @@ function createButtonResponse(number, messageText, buttons) {
     } else {
         switch (text) {
             case "1":
-                data = createResponse(number, "¡Aquí tienes nuestra lista de servicios! 😊\n\n📋 **Maquillaje**:\n- Maquillaje nupcial\n- Maquillaje XV años\n- Maquillaje piel madura\n- Maquillaje editorial\n- Maquillaje full color\n- Maquillaje con delineados gráficos.\n\n📋 **Peinados**:\n- Peinado con Ondas de agua y Hollywood\n- Peinado alaciado\n- Peinados sueltos\n- Peinados semirecogidos\n\n¿Te gustaría agendar una cita? 😊");
+                data = createResponse(number, "¡Aquí tienes nuestra lista de servicios! 😊\n\n📋 **Maquillaje**:\n- Maquillaje nupcial\n- Maquillaje XV años\n- Maquillaje piel madura\n- Maquillaje editorial\n- Maquillaje full color\n- Maquillaje con delineados gráficos.\n\n📋 **Peinados**:\n- Peinado con Ondas de agua y Hollywood\n- Peinado alaciado\n- Peinados sueltos\n- Peinados semirecogidos\n\n");
+                sendWhatsAppMessage(data);
+                const buttonsAgendar = [
+                    { type: "reply", reply: { id: "si", title: "Sí "} },
+                    { type: "reply", reply: { id: "no", title: "No "} }
+                ];
+
+                data = createButtonResponse(number, "¿Te gustaría agendar una cita? 😊", buttonsAgendar);
                 break;
             case "2":
                 data = createResponse(number, "Nuestros días de atención son de lunes a domingo en el horario que más se acomode a tu evento (a disponibilidad). 😊");
                 break;
             case "3":
-                data = createResponse(number, "¡Mira algunos de nuestros trabajos recientes! 🎨📸\n\nVisita nuestro portafolio en: https://edithmanriquemakeupartist.netlify.app/portafolio\n\nY síguenos en nuestras redes sociales para ver más contenido reciente:\n\nInstagram: https://www.instagram.com/edithmanriquemakeup?igsh=bzg1eTFyN2w5ZDNk\nFacebook: https://www.facebook.com/profile.php?id=61568716406850&mibextid=ZbWKwL\n\n¿Te gustaría ver más trabajos? 😊");
+                data = createResponse(number, "¡Mira algunos de nuestros trabajos recientes! 🎨📸\n\nVisita nuestro portafolio en: https://edithmanriquemakeupartist.netlify.app/portafolio\n\nY síguenos en nuestras redes sociales para ver más contenido reciente:\n\nInstagram: https://www.instagram.com/edithmanriquemakeup?igsh=bzg1eTFyN2w5ZDNk\nFacebook: https://www.facebook.com/profile.php?id=61568716406850&mibextid=ZbWKwL");
                 break;
             case "4":
                 data = createResponse(number, "🙏 Gracias por contactarnos, en un momento nuestra asesora te contestará.💬\n\n¡Gracias por tu paciencia! 😊");
