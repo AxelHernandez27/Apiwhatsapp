@@ -49,7 +49,7 @@ function EnviarMensajeWhatssApp(text, number) {
     let data;
 
 // Función para crear botones interactivos
-function createButtonResponse(number, messageText, buttons) {
+function createButtonResponse(number) {
     return JSON.stringify({
         "messaging_product": "whatsapp",
         "to": number,
@@ -88,15 +88,18 @@ function createButtonResponse(number, messageText, buttons) {
     } else {
         switch (text) {
             case "1":
-                const mensaje = createResponse(number, "¡Aquí tienes nuestra lista de servicios! 😊\n\n📋 **Maquillaje**:\n- Maquillaje nupcial\n- Maquillaje XV años\n- Maquillaje piel madura\n- Maquillaje editorial\n- Maquillaje full color\n- Maquillaje con delineados gráficos.\n\n📋 **Peinados**:\n- Peinado con Ondas de agua y Hollywood\n- Peinado alaciado\n- Peinados sueltos\n- Peinados semirecogidos\n\n");
-                sendWhatsAppMessage(mensaje);
+                data = createResponse(number, "¡Aquí tienes nuestra lista de servicios! 😊\n\n📋 **Maquillaje**:\n- Maquillaje nupcial\n- Maquillaje XV años\n- Maquillaje piel madura\n- Maquillaje editorial\n- Maquillaje full color\n- Maquillaje con delineados gráficos.\n\n📋 **Peinados**:\n- Peinado con Ondas de agua y Hollywood\n- Peinado alaciado\n- Peinados sueltos\n- Peinados semirecogidos\n\n¿Te gustaría agendar una cita? 😊\n\nEscribe Escribe \"Sí\" o \"No\"");
+                if (text.toLowerCase() === "si" || text.toLowerCase() === "sí") {
+                    data = createResponse(number, "¡Perfecto! Por favor, proporcióname los siguientes datos para agendar tu cita:\n\n📌 **Nombre y Apellido**\n📅 **Fecha (DD/MM/AAAA)**\n⏰ **Hora (HH:MM)**\n🏠 **Domicilio**\n🛠️ **Servicio** (e.g., Maquillaje nupcial, Peinado con ondas de agua, etc.)");
 
-                const buttonsAgendar = [
-                    { type: "reply", reply: { id: "si", title: "Sí" } },
-                    { type: "reply", reply: { id: "no", title: "No" } }
-                ];
+                    const chatH = chatHistorial[number] || "No hay historial disponible.";
 
-                data = createButtonResponse(number, "¿Te gustaría agendar una cita? 😊", buttonsAgendar);
+                    enviarMensajeAsesora(number, chatH);
+                } else if (text.toLowerCase() === "no") {
+                    data = createResponse(number, "¡Entendido! Si necesitas ayuda más adelante, no dudes en escribirme. 😊");
+                } else {
+                    data = createResponse(number, "No entendí tu mensaje. Por favor, selecciona una opción del menú. 😊");
+                }
                 break;
             case "2":
                 data = createResponse(number, "Nuestros días de atención son de lunes a domingo en el horario que más se acomode a tu evento (a disponibilidad). 😊");
