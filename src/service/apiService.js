@@ -49,7 +49,7 @@ function EnviarMensajeWhatssApp(text, number) {
     let data;
 
     if (text.includes("hola")) {
-        data = createResponse(number, "Hola🌟\n\n¿Ya tuviste oportunidad de visitar nuestra página web? 👉 edithmanriquemakeupartist.netlify.app/inicio\nEn ella encontrarás información sobre nuestros servicios de peinados y maquillaje.\n\n📋 Selecciona una opción para continuar:\n1️⃣ Información sobre servicios de maquillaje, peinados y cotizaciones/reservas.\n2️⃣ Conocer nuestros horarios de atención.\n3️⃣ Ver nuestros trabajos recientes.\n4️⃣ Hablar con un asesor.\n0️⃣ Regresar al menú\n\nEscribe el número de la opción que deseas y con gusto te ayudaré. 😊");
+        data = createResponse(number, "Hola🌟\n\n¿Ya tuviste oportunidad de visitar nuestra página web? 👉 edithmanriquemakeupartist.netlify.app/inicio\nEn ella encontrarás información sobre nuestros servicios de peinados y maquillaje.\n\n📋 Selecciona una opción para continuar:\n1️⃣ Información sobre servicios de maquillaje, peinados y cotizaciones/reservas.\n2️⃣ Ver nuestros trabajos recientes.\n3️⃣ Hablar con un asesor.\n0️⃣ Regresar al menú\n\nEscribe el número de la opción que deseas y con gusto te ayudaré. 😊");
     } else if (text.includes(":")) {
         const datosCliente = text;
         enviarMensajeAsesora(number, datosCliente);
@@ -57,30 +57,27 @@ function EnviarMensajeWhatssApp(text, number) {
     } else {
         switch (text.toLowerCase()) {
             case "1":
-                data = createResponse(number, "¡Aquí tienes nuestra lista de servicios! 😊\n\n📋 **Maquillaje**:\n- Maquillaje nupcial\n- Maquillaje XV años\n- Maquillaje piel madura\n- Maquillaje editorial\n- Maquillaje full color\n- Maquillaje con delineados gráficos.\n\n📋 **Peinados**:\n- Peinado con Ondas de agua y Hollywood\n- Peinado alaciado\n- Peinados sueltos\n- Peinados semirecogidos\n\n¿Te gustaría agendar una cita? 😊\n\nEscribe \"Sí\" o \"No\"");
+                data = createResponse(number, "¡Aquí tienes nuestra lista de servicios! 😊\n\n📋 **Maquillaje**:\n- Maquillaje nupcial\n- Maquillaje XV años\n- Maquillaje piel madura\n- Maquillaje editorial\n- Maquillaje full color\n- Maquillaje con delineados gráficos.\n\n📋 **Peinados**:\n- Peinado con Ondas de agua y Hollywood\n- Peinado alaciado\n- Peinados sueltos\n- Peinados semirecogidos\n\n¿Te gustaría recibir una cotizacion y/o agendar una cita? 😊\n\nEscribe \"Sí\" o \"No\"");
                 break;
             case "si":
-                data = createResponse(number, "¡Perfecto! Por favor, proporcióname los siguientes datos en un solo mensaje para agendar tu cita:\n\n📌 *Nombre y Apellido*\n📅 *Fecha (DD/MM/AAAA)*\n⏰ *Hora (HH:MM)*\n🏠 *Domicilio*\n💄*Servicio* (e.g., Maquillaje nupcial, Peinado con ondas de agua, etc.)");
+                data = createResponse(number, "¡Perfecto! Por favor, proporcióname los siguientes datos en un solo mensaje para cotizar y/o agendar tu cita:\n\n📌 *Nombre y Apellido*\n📅 *Fecha (DD/MM/AAAA)*\n⏰ *Hora de tu evento(HH:MM)*\n🏠 *Domicilio*\n💄 *Servicio* (Ejemplo, Maquillaje nupcial, Peinado con ondas de agua, etc.)");
                 break;
             case "sí":
-                    data = createResponse(number, "¡Perfecto! Por favor, proporcióname los siguientes datos en un solo mensaje para agendar tu cita:\n\n📌 *Nombre y Apellido*\n📅 *Fecha (DD/MM/AAAA)*\n⏰ *Hora (HH:MM)*\n🏠 *Domicilio*\n💄*Servicio* (e.g., Maquillaje nupcial, Peinado con ondas de agua, etc.)");
+                    data = createResponse(number, "¡Perfecto! Por favor, proporcióname los siguientes datos en un solo mensaje para cotizar y/o agendar tu cita:\n\n📌 *Nombre y Apellido*\n📅 *Fecha (DD/MM/AAAA)*\n⏰ *Hora de tu evento(HH:MM)*\n🏠 *Domicilio*\n💄 *Servicio* (Ejemplo, Maquillaje nupcial, Peinado con ondas de agua, etc.)");
                     break;
             case "no":
                 data = createResponse(number, "¡Entendido! Si necesitas ayuda más adelante, no dudes en escribirme. 😊");
                 break;
             case "2":
-                data = createResponse(number, "Nuestros días de atención son de lunes a domingo en el horario que más se acomode a tu evento (a disponibilidad). 😊");
-                break;
-            case "3":
                 data = createResponse(number, "¡Mira algunos de nuestros trabajos recientes! 🎨📸\n\nVisita nuestro portafolio en: https://edithmanriquemakeupartist.netlify.app/portafolio\n\nY síguenos en nuestras redes sociales para ver más contenido reciente:\n\nInstagram: https://www.instagram.com/edithmanriquemakeup?igsh=bzg1eTFyN2w5ZDNk\nFacebook: https://www.facebook.com/profile.php?id=61568716406850&mibextid=ZbWKwL");
                 break;
-            case "4":
+            case "3":
                 data = createResponse(number, "🙏 Gracias por contactarnos, en un momento nuestra asesora te contestará.💬\n\n¡Gracias por tu paciencia! 😊");
                 const datosCliente = text;
                 enviarMensajeAsesora(number, datosCliente);
                 break;
             case "0":
-                data = createResponse(number, "Hola🌟\n\n¿Ya tuviste oportunidad de visitar nuestra página web? 👉 edithmanriquemakeupartist.netlify.app/inicio\nEn ella encontrarás información sobre nuestros servicios de peinados y maquillaje.\n\n📋 Selecciona una opción para continuar:\n1️⃣ Información sobre servicios de maquillaje, peinados y cotizaciones/reservas.\n2️⃣ Conocer nuestros horarios de atención.\n3️⃣ Ver nuestros trabajos recientes.\n4️⃣ Hablar con un asesor.\n0️⃣ Regresar al menú\n\nEscribe el número de la opción que deseas y con gusto te ayudaré.😊");
+                data = createResponse(number, "Hola🌟\n\n¿Ya tuviste oportunidad de visitar nuestra página web? 👉 edithmanriquemakeupartist.netlify.app/inicio\nEn ella encontrarás información sobre nuestros servicios de peinados y maquillaje.\n\n📋 Selecciona una opción para continuar:\n1️⃣ Información sobre servicios de maquillaje, peinados y cotizaciones/reservas.\n2️⃣ Ver nuestros trabajos recientes.\n3️⃣Hablar con un asesor.\n0️⃣ Regresar al menú\n\nEscribe el número de la opción que deseas y con gusto te ayudaré.😊");
                 break;
             default:
                 data = createResponse(number, "No entendí tu mensaje. Por favor, selecciona una opción del menú o elige un tipo de maquillaje o peinado. 😊");
